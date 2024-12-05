@@ -1,0 +1,37 @@
+---
+slug: zkproofs-in-1000 words
+title: Zero-Knowledge proofs in 1000 words
+date: 2022-01-05
+author: robertinom
+tags:
+  - cryptography
+  - protocol
+  - blockchain
+---
+# Zero-knowledge proof
+
+\#todo: hook? applications? why is this important?
+
+Zero-knowledge proof (ZK proof) is a method by which one party (the prover) can prove to another party (the verifier) that a given statement is true without conveying any additional information apart from the fact that the statement is indeed true.
+
+A ZK proof has to satisfy 3 properties:
+
+* *Completeness:* If the statement is true, the honest verifier (that is, one following the protocol properly) will be convinced of this fact by an honest prover.
+* *Soundness*: If the statement is false, no cheating prover can convince the honest verifier that it is true, except with some small probability.
+* *Zero-knowledge*: If the statement is true, no verifier learns anything other than the fact that the statement is true. In other words, just knowing the statement (not the secret) is sufficient to imagine a scenario showing that the prover knows the secret. 
+
+**But how can you prove something without revealing anything about it?. Let's see a simple example.**
+
+Imagine you want to prove to your red-green colorblind friend that two pens—one red and one green but otherwise identical—are of a different color. But you want to do it without revealing which one is which (because you can't risk him knowing that time-sensitive crucial information). 
+
+The two pens look the same to him, but you can tell which one is which instantly by just looking at the pens. So this is what you do. You could call this the "proof protocol":
+
+1. Give your friend both pens, and he puts them behind his back.
+2. He takes one of the pens and displays it to you (you now know which pen has in which hand, but he doesn't). Then, he conceals the pen behind his back again.
+3. Finally, he chooses to reveal any of the pens asking, "did I switch the pens?". And you have to answer yes or no. As many times as needed. 
+
+By allowing him to switch them behind his back, he can rest assured that if the pens are identical, your chance of correctly *guessing by sheer luck is 50% on each attempt*. But your *real chance of correctly guessing is 100%* because you can see if the pen is of the same or a different color.
+
+If you follow this protocol, the probability of correctly guessing *all attempts* by luck—and therefore the probability that you are lying—reduces from 50% to 25%, to 12.5%, to 6.25%, to 3.125%, etc. Eventually, the probability will be so low that your friend will be convinced.
+
+You've proven to your friend that one pen is red and the other one is green without revealing which one is which, or any information for that matter. *That's a zero-knowledge proof.*
